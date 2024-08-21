@@ -5,6 +5,7 @@ main(){
     python -m venv ./venv
     source ./venv/bin/activate
     pip install inquirer
+    pip install tabulate
 }
 
 main
