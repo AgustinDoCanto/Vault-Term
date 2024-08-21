@@ -1,8 +1,9 @@
 #!/bin/sh
 
 main(){
-    cd ./src
+    cd ./src/
     python -m venv ./venv
+    source ./venv/bin/activate
     pip install inquirer
 }
 
