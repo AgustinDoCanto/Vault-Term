@@ -40,10 +40,11 @@ def create_project_folder():
         print(f"This project folder name '{folder_name}' already exists.")
 
 def main_menu():
+    OPTIONS = ['Create Project', 'Create Backup', 'Set Media Path', 'Manage projects', 'Exit']
     questions = [
         inquirer.List('option',
                       message="Option menu",
-                      choices=['Create Project', 'Open Project', 'Exit'],
+                      choices=
                      ),
     ]
     
