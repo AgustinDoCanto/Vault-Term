@@ -1,4 +1,5 @@
 import os
+import time
 import subprocess
 import inquirer
 
@@ -28,41 +29,62 @@ def create_project_folder():
     answers = inquirer.prompt(questions)
     folder_name = answers['folder_name']
     
-    # Define the path where the folder will be created
-    base_path = "../Project-Vault/"
-    full_path = os.path.join(base_path, folder_name)
-    
-    # Create the folder if it doesn't exist
-    if not os.path.exists(full_path):
-        os.makedirs(full_path)
-        print(f"Project '{folder_name}' created successfully.")
+    if folder_name == '':
+        main_menu()
     else:
-        print(f"This project folder name '{folder_name}' already exists.")
+        # Define the path where the folder will be created
+        base_path = "../Project-Vault/"
+        full_path = os.path.join(base_path, folder_name)
+        
+        # Create the folder if it doesn't exist
+        if not os.path.exists(full_path):
+            os.makedirs(full_path)
+            print(f"Project '{folder_name}' created successfully.")
+        else:
+            print(f"This project folder name '{folder_name}' already exists.")
+
+def not_implemented_yet():
+    print("Not implemented yet :(")
+    time.sleep(1)
+    main_menu()
+
+
+#############
+# MAIN MENU #
+#############
+
+MAIN_MENU_OPTIONS = ['Create Project', 'Create Backup', 'Set Media Path', 'Manage projects', 'Exit']
 
 def main_menu():
-    OPTIONS = ['Create Project', 'Create Backup', 'Set Media Path', 'Manage projects', 'Exit']
+    clear_screen()
+    print_banner()
     questions = [
         inquirer.List('option',
                       message="Option menu",
-                      choices=
+                      choices=MAIN_MENU_OPTIONS
                      ),
     ]
     
     answers = inquirer.prompt(questions)
-    if answers['option'] == 'Create Project':
+    if answers['option'] == MAIN_MENU_OPTIONS[0]:
         clear_screen()
         print_banner()   
         create_project_folder()
-    elif answers['option'] == 'Open Project':
-        clear_screen()
-        print_banner()   
-        print("You choose option 2")
-    elif answers['option'] == 'Exit':
-        print("Goodbye :) ...")
+    elif answers['option'] == MAIN_MENU_OPTIONS[1]:
+        not_implemented_yet()
+    elif answers['option'] == MAIN_MENU_OPTIONS[2]:
+        not_implemented_yet()
+    elif answers['option'] == MAIN_MENU_OPTIONS[3]:
+        not_implemented_yet() 
+    elif answers['option'] == MAIN_MENU_OPTIONS[4]:
+        print("Goodbye :)")
         print("Leaving ...")
         return
 
-    
+
+
+
+
 if __name__ == "__main__":
     clear_screen()
     print_banner()
