@@ -65,7 +65,8 @@ def open_file_with_vim(file_path):
 def list_directory_contents_with_permissions(path):
     try:
         files = os.listdir(path)
-       
+        
+        # Lists all the projects
         table_data = []
         for file in files:
             file_path = os.path.join(path, file)
@@ -78,7 +79,7 @@ def list_directory_contents_with_permissions(path):
 
         print(tabulate(table_data, headers=headers, tablefmt="fancy_grid"))
 
-        # Prompt to ask for the folder name
+        # Prompt to ask for the project name
         questions = [
             inquirer.Text('project_name', message="Enter the project name")
         ]
@@ -87,17 +88,21 @@ def list_directory_contents_with_permissions(path):
         answers = inquirer.prompt(questions)
         project_name = answers['project_name']
         
-        project_files = []
         for file in files:
+            # Select the project
             if file == project_name:
                 try:
-                    file_path = os.path.join(path, file)
+                    project_files = []
+                    # Join the project name to path
+                    file_path = os.path.join(path, project_name)
                     project_files = os.listdir(file_path)
                     clear_screen()
                     print_banner()
 
+                    table_data = []
+                    # List all the files and folders in the project
                     for project in project_files:
-                        file_path = os.path.join(path, file, project)
+                        file_path = os.path.join(path, project_name, project)
                         file_stat = os.stat(file_path)
                         permissions = stat.filemode(file_stat.st_mode)
                         table_data.append([permissions, project])
@@ -106,21 +111,26 @@ def list_directory_contents_with_permissions(path):
                     headers = ["Permissions", "Files"]
                     print(tabulate(table_data, headers=headers, tablefmt="github"))
 
-                    # Prompt to ask for the project name to edit
-                    questions = [
-                        inquirer.Text('project_name_edit', message="Edit project")
-                    ]
+                    project_name_edit = ''
 
-                    # Get the user's input
-                    answers = inquirer.prompt(questions)
-                    project_name_edit = answers['project_name_edit']
+                    while project_name_edit != 'back':
+                        # Prompt to ask for the project name to edit
+                        questions = [
+                            inquirer.Text('project_name_edit', message="Edit project")
+                        ]
 
-                    if project_name_edit == '':
-                        main_menu()
-                    else:
-                        file_path = os.path.join(path, file, project_name_edit)
-                        open_file_with_vim(file_path)
+                        # Get the user's input
+                        answers = inquirer.prompt(questions)
+                        project_name_edit = answers['project_name_edit']
 
+                        # Open for edit the file or folder selected
+                        if project_name_edit == '':
+                            main_menu()
+                        elif project_name_edit != 'back':
+                            file_path = os.path.join(path, file, project_name_edit)
+                            open_file_with_vim(file_path)
+
+                    main_menu()
                 except Exception as e:
                     print(f"An unexpected error occurred: {e}")
 
