@@ -7,6 +7,7 @@ import stat
 
 
 VAULT_MEDIA_PATH = "../Project-Vault/"
+VAULT_BASE_NAME = "Project-Vault"
 
 def figlet_print(text, font="standard"):
     result = subprocess.run(['figlet', '-f', font, text], stdout=subprocess.PIPE)
@@ -23,6 +24,32 @@ def clear_screen():
     # For Unix/Linux or macOS
     else:
         os.system('clear')
+
+def make_backup_os(backup_path):
+    def get_unique_path_name(base_name, backup_path):
+        backup_folder_path = os.path.join(backup_path, base_name)
+        counter = 1
+        
+        while os.path.exists(backup_folder_path):
+            backup_folder_path = os.path.join(backup_path, f"{base_name}_{counter}")
+            counter += 1
+        
+        return backup_folder_path
+    
+    BACKUP_PATH = get_unique_path_name(VAULT_BASE_NAME, backup_path)
+
+    result = subprocess.run(['cp', '-r', VAULT_MEDIA_PATH, BACKUP_PATH], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    
+    if result.returncode == 0:
+        print(f"Backup completed successfully. Folder saved as: {BACKUP_PATH}")
+    else:
+        print(f"Backup failed. Error: {result.stderr.decode('utf-8')}")
+    
+    return result.stdout.decode('utf-8')
+
+##################
+# CREATE PROJECT #
+##################
 
 def create_project_folder():
     # Prompt to ask for the folder name
@@ -45,8 +72,12 @@ def create_project_folder():
         if not os.path.exists(full_path):
             os.makedirs(full_path)
             print(f"Project '{folder_name}' created successfully.")
+            time.sleep(1)
+            main_menu()
         else:
             print(f"This project folder name '{folder_name}' already exists.")
+            time.sleep(1)
+            main_menu()
 
 def not_implemented_yet():
     print("Not implemented yet :(")
@@ -75,7 +106,7 @@ def list_directory_contents_with_permissions(path):
             table_data.append([permissions, file])
         
        
-        headers = ["Permissions", "Projects"]
+        headers = ["PERMISSIONS", "PROJECTS"]
 
         print(tabulate(table_data, headers=headers, tablefmt="fancy_grid"))
 
@@ -88,51 +119,55 @@ def list_directory_contents_with_permissions(path):
         answers = inquirer.prompt(questions)
         project_name = answers['project_name']
         
-        for file in files:
-            # Select the project
-            if file == project_name:
-                try:
-                    project_files = []
-                    # Join the project name to path
-                    file_path = os.path.join(path, project_name)
-                    project_files = os.listdir(file_path)
-                    clear_screen()
-                    print_banner()
+        if project_name == '':
+            main_menu()
+        else:
+            for file in files:
+                # Select the project
+                if file == project_name:
+                    try:
+                        project_files = []
+                        # Join the project name to path
+                        file_path = os.path.join(path, project_name)
+                        project_files = os.listdir(file_path)
+                        clear_screen()
+                        print_banner()
 
-                    table_data = []
-                    # List all the files and folders in the project
-                    for project in project_files:
-                        file_path = os.path.join(path, project_name, project)
-                        file_stat = os.stat(file_path)
-                        permissions = stat.filemode(file_stat.st_mode)
-                        table_data.append([permissions, project])
+                        table_data = []
+                        # List all the files and folders in the project
+                        for project in project_files:
+                            file_path = os.path.join(path, project_name, project)
+                            file_stat = os.stat(file_path)
+                            permissions = stat.filemode(file_stat.st_mode)
+                            table_data.append([permissions, project])
 
 
-                    headers = ["Permissions", "Files"]
-                    print(tabulate(table_data, headers=headers, tablefmt="github"))
+                        headers = ["PERMISSIONS", "FILES"]
+                        print(tabulate(table_data, headers=headers, tablefmt="github"))
 
-                    project_name_edit = ''
+                        project_name_edit = ''
 
-                    while project_name_edit != 'back':
-                        # Prompt to ask for the project name to edit
-                        questions = [
-                            inquirer.Text('project_name_edit', message="Edit project")
-                        ]
+                        while project_name_edit != 'back':
+                            # Prompt to ask for the project name to edit
+                            questions = [
+                                inquirer.Text('project_name_edit', message="Edit project")
+                            ]
 
-                        # Get the user's input
-                        answers = inquirer.prompt(questions)
-                        project_name_edit = answers['project_name_edit']
+                            # Get the user's input
+                            answers = inquirer.prompt(questions)
+                            project_name_edit = answers['project_name_edit']
 
-                        # Open for edit the file or folder selected
-                        if project_name_edit == '':
-                            main_menu()
-                        elif project_name_edit != 'back':
-                            file_path = os.path.join(path, file, project_name_edit)
-                            open_file_with_vim(file_path)
+                            # Open for edit the file or folder selected
+                            if project_name_edit == '':
+                                main_menu()
+                                return
+                            elif project_name_edit != 'back':
+                                file_path = os.path.join(path, file, project_name_edit)
+                                open_file_with_vim(file_path)
 
-                    main_menu()
-                except Exception as e:
-                    print(f"An unexpected error occurred: {e}")
+                        main_menu()
+                    except Exception as e:
+                        print(f"An unexpected error occurred: {e}")
 
     except FileNotFoundError:
         print(f"Error: The directory {path} does not exist.")
@@ -151,7 +186,32 @@ def manage_projects_function():
     list_directory_contents_with_permissions(VAULT_MEDIA_PATH)
     
 
+#################
+# CREATE BACKUP #
+#################
 
+def create_backup():
+    # Prompt to ask for the folder name
+    questions = [
+        inquirer.Text('backup_path', message="Enter Backup Path")
+    ]
+    # Get the user's input
+    answers = inquirer.prompt(questions)
+    backup_path = os.path.expanduser(answers['backup_path'])
+
+    if not os.path.exists(backup_path):
+        print(backup_path)
+        print("The given path doesn't exists")
+        time.sleep(2)
+        main_menu()
+    else:
+        make_backup_os(backup_path)
+
+
+def create_backup_function():
+    clear_screen()
+    print_banner()
+    create_backup()
 
 #############
 # MAIN MENU #
@@ -175,7 +235,7 @@ def main_menu():
         print_banner()   
         create_project_folder()
     elif answers['option'] == MAIN_MENU_OPTIONS[1]:
-        not_implemented_yet()
+        create_backup_function()
     elif answers['option'] == MAIN_MENU_OPTIONS[2]:
         not_implemented_yet()
     elif answers['option'] == MAIN_MENU_OPTIONS[3]:
