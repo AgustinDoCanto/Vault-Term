@@ -41,9 +41,9 @@ def make_backup_os(backup_path):
     result = subprocess.run(['cp', '-r', VAULT_MEDIA_PATH, BACKUP_PATH], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     
     if result.returncode == 0:
-        print(f"Backup completed successfully. Folder saved as: {BACKUP_PATH}")
+        print(f"Backup completed successfully. \n Folder saved as: {BACKUP_PATH}")
     else:
-        print(f"Backup failed. Error: {result.stderr.decode('utf-8')}")
+        print(f"Backup failed. \n Error: {result.stderr.decode('utf-8')}")
     
     return result.stdout.decode('utf-8')
 
@@ -202,10 +202,12 @@ def create_backup():
     if not os.path.exists(backup_path):
         print(backup_path)
         print("The given path doesn't exists")
-        time.sleep(2)
+        input("Press Enter to continue...")
         main_menu()
     else:
         make_backup_os(backup_path)
+        input("Press Enter to continue...")
+        main_menu()
 
 
 def create_backup_function():
