@@ -25,16 +25,18 @@ def clear_screen():
     else:
         os.system('clear')
 
+def get_unique_path_name(base_name, path):
+    backup_folder_path = os.path.join(path, base_name)
+    counter = 1
+    
+    while os.path.exists(backup_folder_path):
+        backup_folder_path = os.path.join(path, f"{base_name}_{counter}")
+        counter += 1
+    
+    return backup_folder_path
+
 def make_backup_os(backup_path):
-    def get_unique_path_name(base_name, backup_path):
-        backup_folder_path = os.path.join(backup_path, base_name)
-        counter = 1
-        
-        while os.path.exists(backup_folder_path):
-            backup_folder_path = os.path.join(backup_path, f"{base_name}_{counter}")
-            counter += 1
-        
-        return backup_folder_path
+
     
     BACKUP_PATH = get_unique_path_name(VAULT_BASE_NAME, backup_path)
 
@@ -215,6 +217,51 @@ def create_backup_function():
     print_banner()
     create_backup()
 
+##################
+# SET MEDIA PATH #
+##################
+
+def set_media_path(new_media_path):
+    if os.path.exists(new_media_path):
+        global VAULT_MEDIA_PATH
+        composed_path = f"{new_media_path}/{VAULT_BASE_NAME}/"
+        
+        if not os.path.exists(composed_path):
+            os.makedirs(composed_path)
+        else:
+            print("An existing poject Vault was found \n")
+            question = [
+                inquirer.Confirm('continue',
+                                 message="Do you want to open it?",
+                                 default=True) 
+            ]
+            answer = inquirer.prompt(question)
+    
+            if not answer['continue']:
+                print("New project-vault created")
+                composed_path = get_unique_path_name(VAULT_BASE_NAME, new_media_path)
+
+        VAULT_MEDIA_PATH = composed_path 
+        print(f"Vault media path changed successfully. \n Media path setted as: {VAULT_MEDIA_PATH}")
+        input("Press Enter to continue...")
+    else:
+        print("The given path doesn't exists")
+        input("Press Enter to continue...")
+
+def set_media_path_function():
+    clear_screen()
+    print_banner()
+    # Prompt to ask for the folder name
+    questions = [
+        inquirer.Text('new_media_path', message="Enter the Media Path")
+    ]
+    # Get the user's input
+    answers = inquirer.prompt(questions)
+    new_media_path = os.path.expanduser(answers['new_media_path'])
+    set_media_path(new_media_path)
+    main_menu()
+
+
 #############
 # MAIN MENU #
 #############
@@ -239,7 +286,7 @@ def main_menu():
     elif answers['option'] == MAIN_MENU_OPTIONS[1]:
         create_backup_function()
     elif answers['option'] == MAIN_MENU_OPTIONS[2]:
-        not_implemented_yet()
+        set_media_path_function()
     elif answers['option'] == MAIN_MENU_OPTIONS[3]:
         manage_projects_function()
     elif answers['option'] == MAIN_MENU_OPTIONS[4]:
