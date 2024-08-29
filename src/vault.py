@@ -201,15 +201,18 @@ def create_backup():
     answers = inquirer.prompt(questions)
     backup_path = os.path.expanduser(answers['backup_path'])
 
-    if not os.path.exists(backup_path):
-        print(backup_path)
-        print("The given path doesn't exists")
-        input("Press Enter to continue...")
+    if backup_path == '':
         main_menu()
     else:
-        make_backup_os(backup_path)
-        input("Press Enter to continue...")
-        main_menu()
+        if not os.path.exists(backup_path):
+            print(backup_path)
+            print("The given path doesn't exists")
+            input("Press Enter to continue...")
+            main_menu()
+        else:
+            make_backup_os(backup_path)
+            input("Press Enter to continue...")
+            main_menu()
 
 
 def create_backup_function():
@@ -222,31 +225,37 @@ def create_backup_function():
 ##################
 
 def set_media_path(new_media_path):
-    if os.path.exists(new_media_path):
-        global VAULT_MEDIA_PATH
-        composed_path = f"{new_media_path}/{VAULT_BASE_NAME}/"
-        
-        if not os.path.exists(composed_path):
-            os.makedirs(composed_path)
-        else:
-            print("An existing poject Vault was found \n")
-            question = [
-                inquirer.Confirm('continue',
-                                 message="Do you want to open it?",
-                                 default=True) 
-            ]
-            answer = inquirer.prompt(question)
-    
-            if not answer['continue']:
-                print("New project-vault created")
-                composed_path = get_unique_path_name(VAULT_BASE_NAME, new_media_path)
-
-        VAULT_MEDIA_PATH = composed_path 
-        print(f"Vault media path changed successfully. \n Media path setted as: {VAULT_MEDIA_PATH}")
-        input("Press Enter to continue...")
+    if new_media_path == '':
+        main_menu()
     else:
-        print("The given path doesn't exists")
-        input("Press Enter to continue...")
+        if os.path.exists(new_media_path):
+            global VAULT_MEDIA_PATH
+            composed_path = f"{new_media_path}/{VAULT_BASE_NAME}/"
+            
+          
+
+            if not os.path.exists(composed_path):
+                os.makedirs(composed_path)
+            else:
+                print("An existing poject Vault was found \n")
+                question = [
+                    inquirer.Confirm('continue',
+                                     message="Do you want to open it?",
+                                     default=True) 
+                ]
+                answer = inquirer.prompt(question)
+        
+                if not answer['continue']:
+                    print("New project-vault created")
+                    composed_path = get_unique_path_name(VAULT_BASE_NAME, new_media_path)
+
+            VAULT_MEDIA_PATH = composed_path 
+            print(f"Vault media path changed successfully. \n Media path setted as: {VAULT_MEDIA_PATH}")
+            input("Press Enter to continue...")
+        else:
+            print("The given path doesn't exists")
+            input("Press Enter to continue...")
+        main_menu()
 
 def set_media_path_function():
     clear_screen()
@@ -259,7 +268,6 @@ def set_media_path_function():
     answers = inquirer.prompt(questions)
     new_media_path = os.path.expanduser(answers['new_media_path'])
     set_media_path(new_media_path)
-    main_menu()
 
 
 #############
