@@ -2,7 +2,7 @@
 
 <br>
 
-![Vault-Term-Logo](./documentation/img/Vault-Term-Logo.png "Vault Term Logo")
+![Vault-Term-Logo](./img/Vault-Term-Logo.png "Vault Term Logo")
 
 <br>
 <hr>
@@ -35,7 +35,7 @@ The Projects would be created into the Project-Vault and is basically a folder w
 
 The Project-Vault tree should be like this:
 
-![Project-Vault, Projects and files tree](./documentation/img/Projects-And-Project-Vault-Diagram.png "Project-Vault, Projects and files tree")
+![Project-Vault, Projects and files tree](./img/Projects-And-Project-Vault-Diagram.png "Project-Vault, Projects and files tree")
 
 
 ## How to use
@@ -46,7 +46,7 @@ Once you has successfully installed Vault-Term run the "Vault.sh" with ./Vault.s
 
 After you ran the "Vault.sh" script you would see the main menu:
 
-![Vault Term Main menu](./documentation/img/main-menu.png.png "Vault Term Main menu")
+![Vault Term Main menu](./img/main-menu.png.png "Vault Term Main menu")
 
 For now the following options are available:
 
@@ -61,9 +61,6 @@ Use the arrow keys up and down to choose an option.
 ## Options description
 
 ### Create Project
-
-When you select this option it would ask for the name of the project and then creates a new project into the Project-Vault.
-
 ### Create Backup
 ### Set Media Path
 ### Manage projects
