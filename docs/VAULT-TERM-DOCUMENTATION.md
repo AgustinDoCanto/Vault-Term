@@ -92,6 +92,19 @@ Into the "Create Backup" option:
 
 ### Set Media Path
 
+![Set Media Path option](./img/SetMediaPath/set-media-path-main-menu-option.png "Set Media Path option")
+
+When you create the first Project, Vault-Term creates a Project-Vault in the media path that you set. 
+
+By default the media path is setted in the path that is installed Vault-Term but with this option you can create a vault in another path that could be in a live media or in the current device but in another directory. So you can work and create Projects into a live media and carry with these wherever you like.
+
+![Set Media Path option selected](./img/SetMediaPath/set-media-path-option-selected.png "Set Media Path option selected")
+
+For now the media path is restored to the current path that is installed Vault-Term every time you restart but in the future it could be changed.
+
+
+
+
 ### Manage projects
 
 ### Exit
