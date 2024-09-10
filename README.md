@@ -2,7 +2,7 @@
 
 <br>
 
-![Vault-Term-Logo](./documentation/img/Vault-Term-Logo.png "Vault Term Logo")
+![Vault-Term-Logo](./docs/img/Vault-Term-Logo.png "Vault Term Logo")
 
 <br>
 <hr>

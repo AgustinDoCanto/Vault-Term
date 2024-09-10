@@ -61,9 +61,25 @@ Use the arrow keys up and down to choose an option.
 ## Options description
 
 ### Create Project
+
+To Create a new Project pick the "Create Project" option in the main menu. It would ask you for a project name and then creates a new project with that name in the Project-Vault.
+
+To Manage your Projects see the "Manage Projects" option.
+
+If you choose this option for error click the enter key without writing anything and that will take you to the main menu.
+
+
+![Create Project option selected](./img/CreateProject/vault-term-create-project-option.png "Create Project option selected")
+
+
+![Create Project enter name](./img/CreateProject/create-project-option-selected.png "Create Project enter name")
+
 ### Create Backup
+
 ### Set Media Path
+
 ### Manage projects
+
 ### Exit
 
 
