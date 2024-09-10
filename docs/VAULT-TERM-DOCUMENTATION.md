@@ -76,6 +76,20 @@ If you choose this option for error click the enter key without writing anything
 
 ### Create Backup
 
+The "Create Backup" option creates a backup of the Project-Vault in the target directory path.
+
+This option creates a folder labeled "Projet-Vault" in the target path and it another "Project-Vault" exists in the target it will relabel the Vault with an a N suffix.
+
+
+"Create Backup" option in the main menu:
+
+![Create Backup option](./img/CreateBackup/create-backup-option-main-menu.png "Create Backup option")
+
+Into the "Create Backup" option:
+
+![Create Backup option selected](./img/CreateBackup/create-backup-option-selected-main-menu.png "Create Backup option selected")
+
+
 ### Set Media Path
 
 ### Manage projects
