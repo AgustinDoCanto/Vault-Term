@@ -74,12 +74,13 @@ If you choose this option for error click the enter key without writing anything
 
 ![Create Project enter name](./img/CreateProject/create-project-option-selected.png "Create Project enter name")
 
+If you choose this option for error click the enter key without writing anything and that will take you to the main menu.
+
 ### Create Backup
 
 The "Create Backup" option creates a backup of the Project-Vault in the target directory path.
 
 This option creates a folder labeled "Projet-Vault" in the target path and it another "Project-Vault" exists in the target it will relabel the Vault with an a N suffix.
-
 
 "Create Backup" option in the main menu:
 
@@ -89,6 +90,7 @@ Into the "Create Backup" option:
 
 ![Create Backup option selected](./img/CreateBackup/create-backup-option-selected-main-menu.png "Create Backup option selected")
 
+If you choose this option for error click the enter key without writing anything and that will take you to the main menu.
 
 ### Set Media Path
 
@@ -102,11 +104,21 @@ By default the media path is setted in the path that is installed Vault-Term but
 
 For now the media path is restored to the current path that is installed Vault-Term every time you restart but in the future it could be changed.
 
-
-
+If you choose this option for error click the enter key without writing anything and that will take you to the main menu.
 
 ### Manage projects
 
+By chosing the "Manage Projects" option you can Manage all the Projects that you created wiht the "Create Project" option.
+
+When you choose this option a Project Table where display and it would ask you for the Project name you would like to work on.
+
+If there's not a Project-Vault created, you must create a new Project and then Vault-Term creates a new Project Vault in the current directory path or if you like has a Project-Vault already created in another path you can work on it by choosing it in the "Set Media Path" option into the main menu.
+
+After you enter the name of the Project you would like to work on Vault-Term displays a table with all the files into the Project and it would ask you to enter de file name to edit, if you enter a name that is not in the table it would create it for you and then open it with the Vim text edito so you must have it installed.
+
+If you choose this option for error or would like to back to the main menu, click the enter key without writing anything and that will take you to the main menu.
+
 ### Exit
+
 
 

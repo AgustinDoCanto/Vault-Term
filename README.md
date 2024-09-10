@@ -33,6 +33,10 @@ This project uses **tabulate** to create pretty ASCII tables embebed in terminal
 
 This project uses **inquirer** to ease the flow into the Vault-Term menu. You can visit the [python project page](https://pypi.org/project/inquirer/) to get more information.
 
+### Vim - Text Editor [vim](https://www.vim.org/)
+
+Vault-Term uses the **Vim** editor to edit the files into the projects, to install it see the installation section or the [vim documentation](https://www.vim.org/download.php)
+
 
 <hr>
 
