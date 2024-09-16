@@ -114,11 +114,14 @@ When you choose this option a Project Table where display and it would ask you f
 
 If there's not a Project-Vault created, you must create a new Project and then Vault-Term creates a new Project Vault in the current directory path or if you like has a Project-Vault already created in another path you can work on it by choosing it in the "Set Media Path" option into the main menu.
 
-After you enter the name of the Project you would like to work on Vault-Term displays a table with all the files into the Project and it would ask you to enter de file name to edit, if you enter a name that is not in the table it would create it for you and then open it with the Vim text edito so you must have it installed.
+After enter the name of the Project you would like to work on Vault-Term displays a table with all the files into the Project and it would ask you to enter de file name to edit. 
+
+By choosing a name that is not in the table it would a new file for you and then open it with the Vim text editor, all the files will be opened with it, so you must have it installed.
 
 If you choose this option for error or would like to back to the main menu, click the enter key without writing anything and that will take you to the main menu.
 
 ### Exit
 
+Choose this option to close Vault-Term once you are finish.
 
 
