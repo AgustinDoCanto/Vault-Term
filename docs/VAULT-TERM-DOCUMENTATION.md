@@ -46,7 +46,7 @@ Once you has successfully installed Vault-Term run the "Vault.sh" with ./Vault.s
 
 After you ran the "Vault.sh" script you would see the main menu:
 
-![Vault Term Main menu](./img/main-menu.png.png "Vault Term Main menu")
+![Vault Term Main menu](./img/main-menu.png"Vault Term Main menu")
 
 For now the following options are available:
 
