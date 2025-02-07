@@ -1,110 +1,104 @@
 # Vault-Term
 
-<br>
-
 ![Vault-Term-Logo](./docs/img/Vault-Term-Logo.png "Vault Term Logo")
 
-<br>
-<hr>
+---
 
-## About it
+## About Vault-Term
 
-Vault-Term is a productivity software to manage projects in the terminal in a more comfy way.
+Vault-Term is a terminal-based productivity tool designed to help you manage projects in a more efficient and comfortable way.
 
-In Vault-Term you can create and manage your projects from the terminal, it is oriented towards productivity and note taking, but you can also write code with it.
+With Vault-Term, you can create and manage projects directly from the terminal. While it is primarily oriented toward productivity and note-taking, you can also use it to write code.
 
-It's based on the [Obsidian](https://obsidian.md/) philosophy and it's open source, so any contribuitions are welcome :)
+Inspired by the [Obsidian](https://obsidian.md/) philosophy, Vault-Term is an open-source project—contributions are welcome! :)
 
-<hr>
+---
 
 ## Dependencies
 
-The project was build it in [Python 3.12.5](https://www.python.org/) and it uses the following dependencies and projects:
+Vault-Term is built with [Python 3.12.5](https://www.python.org/) and relies on the following dependencies:
 
-### Figlet - [figlet](https://github.com/cmatsuoka/figlet)
+### [Figlet](https://github.com/cmatsuoka/figlet)
 
-This project uses **figlet** to generate ASCII art, specifically the Vault-Term logo. You can get more information about it by visiting the [project repository](https://github.com/cmatsuoka/figlet)
+Vault-Term uses **Figlet** to generate ASCII art, particularly for the Vault-Term logo. More details can be found in the [Figlet repository](https://github.com/cmatsuoka/figlet).
 
-### Tabulate - [tabulate](https://pypi.org/project/tabulate/)
+### [Tabulate](https://pypi.org/project/tabulate/)
 
-This project uses **tabulate** to create pretty ASCII tables embebed in terminal. You can get more info about tabulate [here](https://pypi.org/project/tabulate/).
+Vault-Term utilizes **Tabulate** to create structured and readable ASCII tables within the terminal. More information is available on the [Tabulate PyPI page](https://pypi.org/project/tabulate/).
 
-### Inquirer - [inquirer](https://pypi.org/project/inquirer/)
+### [Inquirer](https://pypi.org/project/inquirer/)
 
-This project uses **inquirer** to ease the flow into the Vault-Term menu. You can visit the [python project page](https://pypi.org/project/inquirer/) to get more information.
+Vault-Term uses **Inquirer** to streamline navigation within its menu system. You can learn more about it on the [Inquirer PyPI page](https://pypi.org/project/inquirer/).
 
-### Vim - Text Editor [vim](https://www.vim.org/)
+### [Vim](https://www.vim.org/)
 
-Vault-Term uses the **Vim** editor to edit the files into the projects, to install it see the installation section or the [vim documentation](https://www.vim.org/download.php)
+Vault-Term integrates **Vim** as the default text editor for managing project files. You can install it by following the instructions in the [Vim documentation](https://www.vim.org/download.php).
 
-
-<hr>
+---
 
 ## Installation
 
-Vault-Term was created in the [Arch Linux](https://archlinux.org/) but it should work in every UNIX based system, like MacOs or Ubuntu.
+Vault-Term was developed on [Arch Linux](https://archlinux.org/), but it should work on any UNIX-based system, including macOS and Ubuntu.
 
-### Before the installation - **python and figlet**
+### Prerequisites: Python and Figlet
 
-#### Installing figlet
-Vault-Term uses [figlet](https://github.com/cmatsuoka/figlet) to display the "Vault-Term" logo so you must have successfully installed **figlet** in your system. To install it you can run the command:
+#### Installing Figlet
+Vault-Term requires [Figlet](https://github.com/cmatsuoka/figlet) for ASCII art generation. Install it using the following commands:
 
-In Arch Linux:
+**Arch Linux:**
 ```bash
 sudo pacman -Syu figlet
 ```
 
-In Ubuntu:
+**Ubuntu:**
 ```bash
 sudo apt install figlet
 ```
 
-#### Installing python
+#### Installing Python
 
-Also because the script was written in python you need it installed in your system, to install it you can run the command:
+Ensure that Python 3 is installed on your system:
 
+**Arch Linux:**
+```bash
+sudo pacman -Syu python3
+```
 
-In Arch Linux:
+**Ubuntu:**
 ```bash
 sudo apt install python3
 ```
 
-In Ubuntu:
-```bash
-sudo apt install python3
-```
+---
 
-<br>
+### Installing Vault-Term
 
-### Vault-Term Installation
+Once the prerequisites are installed, follow these steps to set up Vault-Term:
 
-With **figlet** successfully installed in your system now you can:
-
-1. **Clone this repository:**
-
+1. **Clone the repository:**
 ```bash
 git clone https://github.com/AgustinDoCanto/Vault-Term.git
 ```
 
-2. **Open the Vault-Term folder**
-
+2. **Navigate to the Vault-Term directory:**
 ```bash
-cd ./Vault-Term
+cd Vault-Term
 ```
 
-3. **Run the install.sh script**
-
-This script would create the python enviroment and install the **inquirer** and **tabulate** dependencies into it.
-
+3. **Run the installation script:**
 ```bash
 ./install.sh
 ```
 
-And that's all!! If all went well, you should have Vault-Term successfully installed in your machine, now when you want to run it you must run the **Vault.sh** script with:
+This script sets up a Python virtual environment and installs the required dependencies (**Inquirer** and **Tabulate**).
 
+---
+
+## Running Vault-Term
+
+Once installed, launch Vault-Term by running:
 ```bash
 ./Vault.sh
 ```
 
-It script should activate the virtual enviroment with the dependencies and run the "vault.py" file that it's the Vault-Term main file and it contains all the font code. Enjoy!
-
+This script activates the virtual environment and executes `vault.py`, the main script that powers Vault-Term. Enjoy!

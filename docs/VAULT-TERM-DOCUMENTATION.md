@@ -7,121 +7,130 @@
 <br>
 <hr>
 
+## Table of Contents
+
+- [Vault-Term Documentation](#vault-term-documentation)
+- [Notes of the software](#notes-of-the-software)
+- [Key Concepts](#key-concepts)
+  - [What is the Project-Vault?](#what-is-the-project-vault)
+  - [What is a Project?](#what-is-a-project)
+  - [Project-Vault and Projects structure tree](#project-vault-and-projects-structure-tree)
+- [How to use](#how-to-use)
+- [Main menu](#main-menu)
+- [Features & Options](#features--options)
+  - [Create Project](#create-project)
+  - [Create Backup](#create-backup)
+  - [Set Media Path](#set-media-path)
+  - [Manage projects](#manage-projects)
+  - [Exit](#exit)
+
 ## Notes of the software
 
 All the changes are made in the filesystem of your machine so you can move and create folders as you wish for create or delete projects or create a new Project-Vault but the goal of this sofware is to simplify that process oriented to notetaking and productivity. 
 
 Also the software is in a development fase so may not have all the bounds checks and validations so made changes on your own risk.
 
-## Definitions
+## Key Concepts
 
 ### What is the Project-Vault?
 
-The Project-Vault is the central piece of the software and is created when you create your first Project. Is the folder where all the Projects are saved.
+The **Project-Vault** is the core storage directory of Vault-Term. It is automatically created when you initialize your first project, serving as the container for all subsequent projects.
 
-For now you can only have one Project-Vault where Vault-Term was installed but you can create how many backups you want in another directorys.
+Currently, only one Project-Vault can exist in the installation directory. However, you can create multiple backups in other directories as needed. 
 
-To create backups of the Project-Vault pick on the "Create Backup" option in the main menu.
+To create a backup, select **"Create Backup"** from the main menu.
 
 
 ### What is a Project?
 
-A Project is a folder created into the Project-Vault and it contains all the .md files (or with another extension), 
+A **Project** is a subfolder within the Project-Vault that contains markdown (`.md`) files or other document formats. Each project serves as a workspace for storing and editing notes.
 
-The Projects would be created into the Project-Vault and is basically a folder where you would create and save all the .md files, or files with another extension, for after edition or consulting.  
+The Projects would be created into the Project-Vault and is takes the form of a folder where edit, create and save all the .md files, or files with another extension, for after edition or consulting.  
 
 
 ### Project-Vault and Projects structure tree
 
-The Project-Vault tree should be like this:
+A **Project-Vault** follows this hierarchical structure:
 
 ![Project-Vault, Projects and files tree](./img/Projects-And-Project-Vault-Diagram.png "Project-Vault, Projects and files tree")
 
 
 ## How to use
 
-Once you has successfully installed Vault-Term run the "Vault.sh" with ./Vault.sh script to launch the main program.
+After installing Vault-Term, execute the following command to launch the program:
+
+```bash
+./Vault.sh
+```
 
 ## Main menu
 
-After you ran the "Vault.sh" script you would see the main menu:
+Upon running `Vault.sh`, the main menu will appear:
 
 ![Vault Term Main menu](./img/main-menu.png"Vault Term Main menu")
 
-For now the following options are available:
+The following options are available:
 
-- Create Project
-- Create Backup
-- Set Media Path
-- Manage projects
-- Exit
+- **Create Project** – Initialize a new project within the Project-Vault.
+- **Create Backup** – Generate a backup of the Project-Vault in a target directory.
+- **Set Media Path** – Specify an alternative directory for storing projects.
+- **Manage Projects** – Access and modify existing projects.
+- **Exit** – Close Vault-Term.
 
-Use the arrow keys up and down to choose an option.
+Use the arrow keys to navigate the menu and press **Enter** to select an option.
 
-## Options description
+## Features & Options
 
 ### Create Project
 
-To Create a new Project pick the "Create Project" option in the main menu. It would ask you for a project name and then creates a new project with that name in the Project-Vault.
+1. Select **"Create Project"** from the main menu.
+2. Enter a project name when prompted.
+3. A new folder with the specified name will be created inside the Project-Vault.
 
-To Manage your Projects see the "Manage Projects" option.
-
-If you choose this option for error click the enter key without writing anything and that will take you to the main menu.
-
+If you accidentally select this option, press **Enter** without entering a name to return to the main menu.
 
 ![Create Project option selected](./img/CreateProject/vault-term-create-project-option.png "Create Project option selected")
-
-
 ![Create Project enter name](./img/CreateProject/create-project-option-selected.png "Create Project enter name")
-
-If you choose this option for error click the enter key without writing anything and that will take you to the main menu.
 
 ### Create Backup
 
-The "Create Backup" option creates a backup of the Project-Vault in the target directory path.
+The **"Create Backup"** option saves a copy of the Project-Vault in a specified target directory.
 
-This option creates a folder labeled "Projet-Vault" in the target path and it another "Project-Vault" exists in the target it will relabel the Vault with an a N suffix.
-
-"Create Backup" option in the main menu:
+- If a **Project-Vault** already exists in the destination, a numerical suffix (e.g., `Project-Vault_1`, `Project-Vault_2`) is added to differentiate backups.
 
 ![Create Backup option](./img/CreateBackup/create-backup-option-main-menu.png "Create Backup option")
-
-Into the "Create Backup" option:
-
 ![Create Backup option selected](./img/CreateBackup/create-backup-option-selected-main-menu.png "Create Backup option selected")
 
-If you choose this option for error click the enter key without writing anything and that will take you to the main menu.
+If you accidentally select this option, press **Enter** without specifying a path to return to the main menu.
 
 ### Set Media Path
 
+The **"Set Media Path"** option allows you to specify a custom storage location for your Project-Vault.
+
+- By default, Vault-Term creates the Project-Vault in its installation directory.
+- You can redirect storage to an external drive or another directory to maintain portable projects.
+- Note: The media path resets to the default location after each restart.
+
 ![Set Media Path option](./img/SetMediaPath/set-media-path-main-menu-option.png "Set Media Path option")
-
-When you create the first Project, Vault-Term creates a Project-Vault in the media path that you set. 
-
-By default the media path is setted in the path that is installed Vault-Term but with this option you can create a vault in another path that could be in a live media or in the current device but in another directory. So you can work and create Projects into a live media and carry with these wherever you like.
-
 ![Set Media Path option selected](./img/SetMediaPath/set-media-path-option-selected.png "Set Media Path option selected")
 
-For now the media path is restored to the current path that is installed Vault-Term every time you restart but in the future it could be changed.
-
-If you choose this option for error click the enter key without writing anything and that will take you to the main menu.
+If you choose this option for error press **Enter** key without writing anything and that will take you to the main menu.
 
 ### Manage projects
 
-By chosing the "Manage Projects" option you can Manage all the Projects that you created wiht the "Create Project" option.
+The **"Manage Projects"** option allows you to access and modify existing projects.
 
-When you choose this option a Project Table where display and it would ask you for the Project name you would like to work on.
+1. Select **"Manage Projects"** from the main menu.
+2. A table displaying available projects will appear.
+3. Enter the name of the project you want to work on.
+4. A list of files within the project will be shown.
+5. Enter the name of a file to edit. If the file does not exist, a new one will be created.
+6. The file will open in Vim. Ensure Vim is installed on your system.
 
-If there's not a Project-Vault created, you must create a new Project and then Vault-Term creates a new Project Vault in the current directory path or if you like has a Project-Vault already created in another path you can work on it by choosing it in the "Set Media Path" option into the main menu.
-
-After enter the name of the Project you would like to work on Vault-Term displays a table with all the files into the Project and it would ask you to enter de file name to edit. 
-
-By choosing a name that is not in the table it would a new file for you and then open it with the Vim text editor, all the files will be opened with it, so you must have it installed.
-
-If you choose this option for error or would like to back to the main menu, click the enter key without writing anything and that will take you to the main menu.
+If you accidentally select this option or wish to return to the main menu, press **Enter** without entering a name.
 
 ### Exit
 
-Choose this option to close Vault-Term once you are finish.
+Select **"Exit"** to close Vault-Term once you are finished.
 
 
